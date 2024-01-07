@@ -1,7 +1,13 @@
+import { Navbar } from "./components/index";
+import RouteConfig from "./routes/RouteConfig";
+
 function App() {
-  return <p className="text-primary"  >
-    Hello World
-  </p>
+  return (
+    <>
+      <Navbar />
+      <RouteConfig />
+    </>
+  );
 }
 
 export default App;
