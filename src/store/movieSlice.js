@@ -5,11 +5,12 @@ const initialState = {
     status: false,
     loader: false,
     searchLoader: false,
+    statusUpcoming: false,
     banner:[],
     movie: [],
     trailer:[],
     search:[],
-    upcomeing:[]
+    upcomeing:[],
 }
 
 export const getTrailer = createAsyncThunk(
@@ -128,14 +129,14 @@ const movieSlice = createSlice({
         console.log(action.payload);
     })
     builder.addCase(upcomeingMovies.pending,(state)=>{
-      state.loader = true;
+      state.statusUpcoming = true;
   })
   builder.addCase(upcomeingMovies.fulfilled,(state,action)=>{
-      state.loader = false;
+      state.statusUpcoming = false;
       state.upcomeing = action.payload;
   })
   builder.addCase(upcomeingMovies.rejected,(state,action)=>{
-      state.loader = false;
+      state.statusUpcoming = false;
       console.log(action.payload);
   })
   }
@@ -150,4 +151,5 @@ export const searchStatus = (state) => state.movies.searchLoader;
 export const selectData = (state)=> state.movies.banner;
 export const selectLoader = (state)=> state.movies.loader;
 export const selectupcoming = (state)=> state.movies.upcomeing;
+export const selectStatusUpcoming = (state)=> state.movies.statusUpcoming;
 export default movieSlice.reducer;

@@ -8,8 +8,6 @@ const Banner = () => {
   const dispatch = useDispatch();
   const data = useSelector(selectData);
   const loader = useSelector(selectLoader);
-
-
   
   useEffect(() => {
     dispatch(fetchData("/movie/now_playing"));

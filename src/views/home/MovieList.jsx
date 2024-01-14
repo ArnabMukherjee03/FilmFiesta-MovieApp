@@ -33,6 +33,7 @@ const MovieList = () => {
   const [params, setParams] = useState("/popular");
   const movies = useSelector(allMovies);
   const loading = useSelector(selectLoading);
+  
   useEffect(() => {
     dispatch(getMovies(`/movie${params}`));
   }, [dispatch, params]);

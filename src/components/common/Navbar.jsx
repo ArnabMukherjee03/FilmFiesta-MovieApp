@@ -56,7 +56,7 @@ const Navbar = () => {
 
  
   return (
-    <nav className="absolute z-40 w-full h-[300px] top-[25px]">
+    <nav className="absolute z-40 w-full  top-[25px]">
       <AutoLayout>
         <div className="relative flex justify-between pl-5 lg:pl-10">
           <GiHamburgerMenu onClick={()=>setNav(!isNav)} className="text-3xl text-white cursor-pointer lg:hidden" />

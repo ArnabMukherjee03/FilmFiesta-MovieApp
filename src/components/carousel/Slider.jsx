@@ -2,7 +2,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Autoplay } from "swiper/modules";
+import { Autoplay,Navigation} from "swiper/modules";
 import { tmdbImg } from "../../config/Conf";
 import { breakpoints, innerWidth } from "../../config/breakpoints";
 
@@ -14,12 +14,13 @@ const Slider = ({data,setCurrent}) => {
             delay: 3000,
             disableOnInteraction: false,
           }}
+         
           slidesPerView={data?.length - 1}
           spaceBetween={breakpoints.sm<=innerWidth?20:10}
           loop={true}
           onSlideChange={(e) => setCurrent(e.realIndex)}
-          modules={[Autoplay]}
-          className="mySwiper w-full"
+          modules={[Autoplay,Navigation]}
+          className="mySwiper w-full "
         >
           {data?.map((item) => {
             return (
