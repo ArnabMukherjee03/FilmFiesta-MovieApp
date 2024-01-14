@@ -3,6 +3,7 @@ import Banner from "./Banner";
 
 import MovieList from "./MovieList";
 import Trailer from "./Trailer";
+import News from "./News";
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <Banner />
       <MovieList />
       <Trailer />
+      <News/>
     </>
   );
 };

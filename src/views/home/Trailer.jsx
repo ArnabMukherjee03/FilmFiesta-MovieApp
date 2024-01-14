@@ -46,6 +46,7 @@ const Trailer = () => {
         getTrailer = {fetchTrailer}
         status={loader}
         data={data}
+        isPlayer={true}
         items={5}
         className="mt-[30px] lg:mt-[60px] lg:px-[20px]"
       ></Slider>

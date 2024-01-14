@@ -3,11 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import ImageCard from "./imagecard/ImageCard";
+import ImageCard from "./card/ImageCard";
 import { breakpoints, innerWidth } from "../config/breakpoints";
 import { ImageSkeleton } from "./index";
 
-const Slider = ({ data = [], items, status, className = "", getTrailer }) => {
+
+const Slider = ({ isPlayer,data = [], items, status, className = "", getTrailer }) => {
   return (
     <AutoLayout className={`${className}`}>
       <Swiper
@@ -28,11 +29,10 @@ const Slider = ({ data = [], items, status, className = "", getTrailer }) => {
           : data?.map((item) => {
               return (
                 <SwiperSlide
-                  onClick={() => getTrailer(item?.id)}
                   key={item?.id}
                   className="cursor-grab"
                 >
-                  <ImageCard className="w-full " movie={item} />
+                  <ImageCard className="w-full " getTrailer={getTrailer} movie={item} isPlayer={isPlayer} />
                 </SwiperSlide>
               );
             })}
