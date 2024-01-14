@@ -5,15 +5,18 @@ export const trailerContext = createContext();
 
 const TrailerProvider = ({ children }) => {
   const [isOpen,setOpen] = useState(false);
+  const [isTrailer,setIsTrailer] = useState(false);
+  const [trailerKey,setTrailerKey] = useState("");
   const [trailerId,setTrailerId] = useState("");
   const trailer = useSelector(selectTrailer);
 
   useEffect(()=>{
-    setTrailerId(trailer.filter(items=> items?.type === "Trailer"))
-  },[trailer]);
+    !isTrailer?setTrailerId(trailer.filter(items=> items?.type === "Trailer")):setTrailerId(trailerKey)
+  },[trailer,isTrailer,trailerKey]);
 
+  
   return (
-    <trailerContext.Provider value={{trailerId,isOpen,setOpen}}>{children}</trailerContext.Provider>
+    <trailerContext.Provider value={{trailerId,isOpen,setOpen,setIsTrailer,setTrailerKey}}>{children}</trailerContext.Provider>
   );
 };
 

@@ -1,6 +1,7 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { tmdbImg } from "../../config/Conf";
 import { FaCirclePlay } from "react-icons/fa6";
+import { NavLink } from "react-router-dom";
 
 const genere = ["Adventure", "Action", "Science"];
 
@@ -17,7 +18,7 @@ const ImageCard = ({isPlayer=false, movie, className = "",getTrailer}) => {
       />
       {isPlayer?<FaCirclePlay onClick={() => getTrailer(movie?.id)} className="absolute cursor-pointer  top-[40%] left-1/2 text-4xl text-white translate-x-[-50%]"/>:null}
       <p className="w-full font-heading text-[8px] lg:text-base lg:leading-[26px]">
-        {movie?.title}
+        <NavLink to={`/movies/${movie?.id}`}>{movie?.title}</NavLink>
       </p>
       <p className="font-para text-[8px] lg:text-base text-gray-500">
         {genere?.map((gen, id) => {

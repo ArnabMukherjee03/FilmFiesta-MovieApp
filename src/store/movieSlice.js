@@ -7,10 +7,11 @@ const initialState = {
     searchLoader: false,
     statusUpcoming: false,
     banner:[],
-    movie: [],
+    movies: [],
     trailer:[],
     search:[],
     upcomeing:[],
+    movie: null
 }
 
 export const getTrailer = createAsyncThunk(
@@ -24,6 +25,20 @@ export const getTrailer = createAsyncThunk(
         return rejectWithValue(error);
       }
     }
+);
+
+export const singlemovie = createAsyncThunk(
+  "movies/id",
+  async (url, {rejectWithValue}) => {
+    try {
+      
+      const response = await fetchDataFromApi(url);
+      return response;
+    } catch (error) {
+      console.log(error)
+      return rejectWithValue(error);
+    }
+  }
 );
 
 export const getMovies = createAsyncThunk(
@@ -88,7 +103,7 @@ const movieSlice = createSlice({
     })
     builder.addCase(getMovies.fulfilled,(state,action)=>{
         state.status = false;
-        state.movie = action.payload;
+        state.movies = action.payload;
     })
     builder.addCase(getMovies.rejected,(state,action)=>{
         state.status = false;
@@ -128,7 +143,7 @@ const movieSlice = createSlice({
         state.loader = false;
         console.log(action.payload);
     })
-    builder.addCase(upcomeingMovies.pending,(state)=>{
+  builder.addCase(upcomeingMovies.pending,(state)=>{
       state.statusUpcoming = true;
   })
   builder.addCase(upcomeingMovies.fulfilled,(state,action)=>{
@@ -139,12 +154,24 @@ const movieSlice = createSlice({
       state.statusUpcoming = false;
       console.log(action.payload);
   })
+  builder.addCase(singlemovie.pending,(state)=>{
+    state.status = true;
+})
+builder.addCase(singlemovie.fulfilled,(state,action)=>{
+    state.status = false;
+    state.movie = action.payload;
+})
+builder.addCase(singlemovie.rejected,(state,action)=>{
+    state.status = false;
+    console.log(action.payload);
+})
   }
 });
 
 
-export const allMovies = (state)=> state.movies.movie;
+export const allMovies = (state)=> state.movies.movies;
 export const selectLoading = (state) => state.movies.status;
+export const selectMovie = (state)=> state.movies.movie;
 export const selectTrailer = (state) => state.movies.trailer;
 export const searchResult = (state)=> state.movies.search;
 export const searchStatus = (state) => state.movies.searchLoader;

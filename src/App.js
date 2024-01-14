@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <VideoModal
-       videoId={trailerId[0]?.key} 
+       videoId={trailerId[0]?.key || trailerId} 
        showModal={isOpen} 
 			 closeModal={()=>{setOpen(!isOpen)}}
        autoPlay={true}

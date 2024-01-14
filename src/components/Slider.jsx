@@ -39,8 +39,7 @@ const Slider = ({ isPlayer,data = [], items, status, className = "", getTrailer 
               return (
                 <SwiperSlide
                   key={item?.id}
-                  className="cursor-grab"
-
+                  className="cursor-pointer py-4"
                 >
                   <ImageCard className="w-full" getTrailer={getTrailer} movie={item} isPlayer={isPlayer} />
                 </SwiperSlide>

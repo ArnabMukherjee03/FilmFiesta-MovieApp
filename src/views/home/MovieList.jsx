@@ -41,7 +41,7 @@ const MovieList = () => {
  
   return (
     <>
-      <AutoLayout className="mt-[40px] lg:mt-[90px]">
+      <AutoLayout className="mt-[40px]  lg:mt-[90px]">
         <div className="flex justify-center  items-center  h-[40px]">
           <div className="flex justify-between gap-2 lg:gap-5">
             {values?.map((val) => {
