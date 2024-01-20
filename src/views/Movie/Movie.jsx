@@ -4,6 +4,7 @@ import { getTrailer, selectLoading, selectMovie, singlemovie } from '../../store
 import Banner from './Banner';
 import { useParams } from "react-router-dom";
 import Details from './Details';
+import Cast from './Cast';
 
 const Movie = () => {
   const {id} = useParams();
@@ -23,6 +24,7 @@ const Movie = () => {
           loading?<><div className="fixed top-0 bg-white z-40 h-screen w-full flex justify-center  items-center">Loading...</div></>:<>
           <Banner movie={movie}/>
           <Details movie={movie}/>
+          <Cast data={movie?.credits.cast} loader={loading}/>
           </>
        }
     </>

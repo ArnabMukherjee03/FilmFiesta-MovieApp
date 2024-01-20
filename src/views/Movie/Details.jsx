@@ -22,7 +22,7 @@ const Details = ({movie}) => {
               <p className='font-para'>Revenue: {movie?.revenue}</p>
               <p className='font-para'>Budget: {movie?.budget}</p>
               <p className='font-para'>Directed By: {movie?.credits.crew.filter((crew)=> crew.job==="Director").map(dir=>{return<span>{dir?.name} </span>})}</p>
-              {/* <p>{Math.floor(movie.vote_average * 10)}%</p> */}
+              {/* <p>{Math.floor(movie.vote_average * 10)}%</p>c */}
            </div>
        </div>
     </AutoLayout>
